@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>DD Tracking Test Site</title>
+    <meta name="viewport" content="width=device-width" />
+    <script id="init-dreamdata">
+      !(function () {
+        var e = "dreamdata",
+          dreamdata = (window[e] = window[e] || []);
+        if (!dreamdata.initialize)
+          if (dreamdata.invoked) window.console && console.error && console.error("Dreamdata snippet included twice.");
+          else {
+            (dreamdata.invoked = !0),
+              (dreamdata.methods = [
+                "trackSubmit",
+                "trackClick",
+                "trackLink",
+                "trackForm",
+                "pageview",
+                "identify",
+                "reset",
+                "group",
+                "track",
+                "ready",
+                "alias",
+                "debug",
+                "page",
+                "screen",
+                "once",
+                "off",
+                "on",
+                "addSourceMiddleware",
+                "addIntegrationMiddleware",
+                "setAnonymousId",
+                "addDestinationMiddleware",
+                "register",
+              ]),
+              (dreamdata.factory = function (t) {
+                return function () {
+                  if (window[e].initialized) return window[e][t].apply(window[e], arguments);
+                  var a = Array.prototype.slice.call(arguments);
+                  if (["track", "screen", "alias", "group", "page", "identify"].indexOf(t) > -1) {
+                    var r = document.querySelector("link[rel='canonical']");
+                    a.push({ __t: "bpc", c: (r && r.getAttribute("href")) || void 0, p: location.pathname, u: location.href, s: location.search, t: document.title, r: document.referrer });
+                  }
+                  return a.unshift(t), dreamdata.push(a), dreamdata;
+                };
+              });
+            for (var t = 0; t < dreamdata.methods.length; t++) {
+              var a = dreamdata.methods[t];
+              dreamdata[a] = dreamdata.factory(a);
+            }
+            (dreamdata.load = function (t, a) {
+              var r = document.createElement("script");
+              (r.id = "dreamdata-analytics"), (r.type = "text/javascript"), (r.async = !0), r.setAttribute("data-global-dreamdata-analytics-key", e), (r.src = "https://cdn.dreamdata.cloud/scripts/analytics/next/dreamdata.min.js");
+              var i = document.getElementsByTagName("script")[0];
+              i.parentNode.insertBefore(r, i), (dreamdata._loadOptions = a);
+            }),
+              (dreamdata._writeKey = "fa959513-ef82-4356-8090-d7601a7298e4"),
+              (dreamdata.SNIPPET_VERSION = "dreamdata-2.0.1"),
+              dreamdata.load("fa959513-ef82-4356-8090-d7601a7298e4", { googleEnhancedConversions: true, formTracking: { html: { useFormIdAsTrackName: true }, drift: true }, intentSources: { autoGroup: true } }),
+              dreamdata.page();
+          }
+      })();
+    </script>
+  </head>
+  <body>
+    <h1>Tracking test</h1>
+  </body>
+</html>
